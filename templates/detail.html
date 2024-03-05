@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+{#    <link rel="stylesheet" href="stayle.css" >#}
+    <style>
+        body{
+    text-align: center;
+}
+        button{
+            font-size: 16px;
+        }
+.button_del{
+    margin-bottom: 10px;
+    color: red;
+}
+.button_up{
+    color: aqua;
+}
+    </style>
+</head>
+<body>
+    <h1>{{ task.title}}</h1>
+    <p>{{ task.description }}</p>
+    <p> creat_time: {{ task.creat_time }}</p>
+     <button class="button_del"> <a href="{% url "home:delete" task.id %}">delete</a> </button>
+    <br>
+     <button class="button_up"> <a href="{% url "home:update" task.id %}">update</a> </button>
+</body>
+</html>

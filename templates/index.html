@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<p><a href="{% url 'home:tasks' %}">list_todo</a></p>
+{% block content %}
+    <a href="{% url 'home:todos' %}">add todo</a>
+{% endblock %}
+
+
+</body>
+</html>

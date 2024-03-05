@@ -1,0 +1,9 @@
+{% extends 'index.html' %}
+
+{% block content %}
+    <p>todo</p>
+    {% for task in tasks %}
+        <a href="{% url "home:detail" task.id %}"> {{ task }}</a>
+        <br>
+    {% endfor %}
+{% endblock %}

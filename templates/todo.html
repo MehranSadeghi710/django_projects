@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}
+    	todo_form
+    {% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    	<form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="add todo">
+        </form>
+    {% endblock %}
+</body>
+</html>
