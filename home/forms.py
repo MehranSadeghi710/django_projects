@@ -11,11 +11,10 @@ class TodoForm(forms.Form):
 
 
 class TodoFormUpdate(forms.ModelForm):
-    # def __init__(self):
+    # def __init__(self, *args, **kwargs):
     #     super(TodoFormUpdate, self).__init__()
-    #     self.fields['title'] = TodoForm.title
-    #     self.fields['description'] = TodoForm.description
-    #     self.fields['status'] = TodoForm.status
+    #     # todo_all = Todo.objects.get(id=kwargs.get)
+    #     self.fields['title'].queryset = Todo.objects.all()
 
     class Meta:
         model = Todo

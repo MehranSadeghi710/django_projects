@@ -11,6 +11,7 @@
     	<form method="post">
             {% csrf_token %}
             {{ form.as_p }}
+            {{ time }}
             <input type="submit" value="add todo">
         </form>
     {% endblock %}

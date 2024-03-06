@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, loader
+from django.shortcuts import render, redirect, loader, get_object_or_404
 from .forms import *
 from .models import Todo
 
@@ -28,7 +28,7 @@ def update(request, todo_id):
         new_todo.status = form.cleaned_data['status']
         new_todo.save()
         return redirect('home:home')
-    return render(request, "todo.html", {"form": form, "time": time})
+    return render(request, "todo.html", {"form": form, "time": time , "new_todo": new_todo})
 
 
 def detail(request, todo_id):
