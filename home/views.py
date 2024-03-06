@@ -1,5 +1,5 @@
-from django.shortcuts import render, redirect
-from .forms import TodoForm
+from django.shortcuts import render, redirect, loader
+from .forms import *
 from .models import Todo
 
 
@@ -19,16 +19,16 @@ def delete(request, todo_id):
 
 
 def update(request, todo_id):
-    task = Todo.objects.get(id=todo_id)
-    form = TodoForm(request.GET)
+    new_todo = Todo.objects.get(id=todo_id)
+    form = TodoFormUpdate(request.POST)
+    time = Todo.updated
     if form.is_valid():
-        todo_obj = Todo.objects.update()
-        todo = form.cleaned_data
-        todo_obj.title = todo['title']
-        todo_obj.description = todo['description']
-        todo_obj.status = todo['status']
-        todo_obj.save()
-    return redirect('home:update', task.id)
+        new_todo.title = form.cleaned_data['title']
+        new_todo.description = form.cleaned_data['description']
+        new_todo.status = form.cleaned_data['status']
+        new_todo.save()
+        return redirect('home:home')
+    return render(request, "todo.html", {"form": form, "time": time})
 
 
 def detail(request, todo_id):
@@ -48,6 +48,3 @@ def todo(request):
             todo_obj.save()
             return redirect('home:home')
     return render(request, "todo.html", {'form': form})
-
-
-
